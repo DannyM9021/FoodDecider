@@ -7,5 +7,5 @@ def spell_check(place):
     lookup = checker.unknown([place])
 
     for word in lookup:
-        # Get a list of `likely` options
-        return checker.candidates(word)
+        # Get a list of `likely` options and returns the most likely
+        return list(checker.candidates(word))[0]
