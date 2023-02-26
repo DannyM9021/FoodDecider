@@ -54,11 +54,10 @@ def submission_page(proceed:bool) -> dict:
                             GUI.popup("Do you mean "+correction+"?")
                     else:
                         if values[1] in ['inexpensive', 'moderate', 'expensive']:
-                            if values is not None:
-                                places = searching(list(values.values()))
-                                rng = random.randint(0, len(places)-1)
-                                window.close()
-                                return places[rng-1]
+                            places = searching(list(values.values()))
+                            rng = random.randint(0, len(places)-1)
+                            window.close()
+                            return places[rng-1]
                         else:
                             GUI.popup("Please choose only: inexpensive, moderate or expensive")
                 # If not all fields are filled in it prompts them to do so
