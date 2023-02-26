@@ -52,9 +52,23 @@ def submission_page(proceed:bool) -> dict:
                             GUI.popup("Do you mean "+correction+"?")
                     else:
                         if values[1] in ['inexpensive', 'moderate', 'expensive']:
+                            window.close()
                             return values
                         else:
                             GUI.popup("Please choose only: inexpensive, moderate or expensive")
                 # If not all fields are filled in it prompts them to do so
                 else:
                     GUI.popup("Please fill ALL fields please")
+def results_page(result: list):
+    layout = [
+        [GUI.Text("Your Restaurant: "+ result[1])],
+        [GUI.Text("Your Price Range: "+ result[0])],
+        [GUI.Text("Rating: "+ str(result[2]))],
+        [GUI.Text("Address: "+ result[3])],
+        [GUI.Cancel()]
+    ]
+    window = GUI.Window("Web Scraper", layout, margins=(300,300))
+    while True:
+        event, values = window.read()
+        if event == "Cancel" or event == GUI.WIN_CLOSED:
+                break

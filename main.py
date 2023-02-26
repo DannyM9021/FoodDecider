@@ -7,6 +7,6 @@ def main():
     if results is not None:
         places = searching(list(results.values()))
         rng = random.randint(0, len(places)-1)
-        print(places[rng][1])
+        results_page(places[rng-1])
 
 main()
