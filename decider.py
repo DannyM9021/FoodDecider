@@ -41,12 +41,12 @@ def searching(param):
     "api_key": "5aa1909e29c5608f5423006db43d6f8332b1ab45dacd27380ae14ebae3ab26a5"
     } 
     priceRange = ""
-    if param[1] == "inexpensive":
+    if str(param[1]) == "inexpensive":
         priceRange += "$"
-    elif param[1] == "moderate":
+    elif str(param[1]) == "moderate":
         priceRange += "$$"
     else:
-        param[1] += "$$$"
+        priceRange += "$$$"
     search = GoogleSearch(params)
     results = search.get_dict()
     local_results = results["local_results"]
