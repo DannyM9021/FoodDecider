@@ -63,5 +63,5 @@ def searching(food, money):
                     local_list.append(local_results[x]["rating"])
                 if "address" in local_results[x]:
                     local_list.append(local_results[x]["address"])
-        restaurant_list.append(local_list)
+                restaurant_list.append(local_list)
     return restaurant_list
