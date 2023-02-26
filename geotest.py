@@ -47,6 +47,7 @@ print(g.city)
 
 import requests
 import json
+import googlemaps
 
 APIKEY = "AIzaSyCREubepe3S9zdisc8Lt65VzpNdseuQKmo"
 
@@ -63,6 +64,13 @@ def findPlaces(loc=("33.7939","-118.1192"),radius=4000, pagetoken = None):
    for result in res["results"]:
       info = ";".join(map(str,[result["name"],result["geometry"]["location"]["lat"],result["geometry"]["location"]["lng"],result.get("rating",0),result["place_id"]]))
       print(info)
+
+   for result in res["results"]:
+      my_fields = ['name','formatted_phone_number','type','formatted_address']
+      place_detail = (googlemaps.Client(key = APIKEY)).place(place_id = result["place_id"],fields = my_fields)
+      print(place_detail)
+
+       
    pagetoken = res.get("next_page_token",None)
 
    print("here -->> ", pagetoken)
@@ -79,3 +87,5 @@ while True:
 
      if not pagetoken:
          break
+
+
