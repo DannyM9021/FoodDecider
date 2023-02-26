@@ -29,6 +29,25 @@ def get():
 
     data = response.json()
     return data['ip']
+
+def searching():
+    search = GoogleSearch(params)
+    results = search.get_dict()
+    local_results = results["local_results"]
+    restaurant_list = []
+    #print(local_results)
+    for x in range(len(local_results)-1):
+        local_list = []
+        if "title" in local_results[x]:
+            local_list.append(local_results[x]["title"])
+        if "price" in local_results[x]:
+            local_list.append(local_results[x]["price"])
+        if "rating" in local_results[x]:
+            local_list.append(local_results[x]["rating"])
+        if "address" in local_results[x]:
+            local_list.append(local_results[x]["address"])
+        restaurant_list.append(local_list)
+    return restaurant_list
 ipAddress = "@" + str(IPConverter()[0]) + "," + str(IPConverter()[1]) + ",15z"
 #print(ipAddress)
 params = {
@@ -37,16 +56,4 @@ params = {
   "ll": ipAddress,
   "type": "search",
   "api_key": "5aa1909e29c5608f5423006db43d6f8332b1ab45dacd27380ae14ebae3ab26a5"
-}
-
-search = GoogleSearch(params)
-results = search.get_dict()
-local_results = results["local_results"]
-restaurant_list = []
-for x in range(len(local_results)):
-    local_list = []
-    local_list.append(local_results[0]["title"])
-    local_list.append(local_results[0]["price"])
-    local_list.append(local_results[0]["rating"])
-    local_list.append(local_results[0]["address"])
-    restaurant_list.append(local_list)
+} 
