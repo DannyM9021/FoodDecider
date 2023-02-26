@@ -1,5 +1,7 @@
 import PySimpleGUI as GUI # from https://www.tutorialspoint.com/pysimplegui/pysimplegui_popup_windows.htm
 from spell_checker import spell_check # Library that checks if words are spelled correctly
+from decider import *
+import random
 
 GUI.theme("DarkTeal9")
 
@@ -52,8 +54,11 @@ def submission_page(proceed:bool) -> dict:
                             GUI.popup("Do you mean "+correction+"?")
                     else:
                         if values[1] in ['inexpensive', 'moderate', 'expensive']:
-                            window.close()
-                            return values
+                            if values is not None:
+                                places = searching(list(values.values()))
+                                rng = random.randint(0, len(places)-1)
+                                window.close()
+                                return places[rng-1]
                         else:
                             GUI.popup("Please choose only: inexpensive, moderate or expensive")
                 # If not all fields are filled in it prompts them to do so
