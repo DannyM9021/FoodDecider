@@ -3,12 +3,12 @@ from spell_checker import spell_check # Library that checks if words are spelled
 from decider import *
 import random
 
-GUI.theme("DarkTeal9")
+GUI.theme("DarkTeal3")
 
 def welcome_page() -> bool:
     layout = [
-        [GUI.Text("Welcome to our Page, please push Start to use")],
-        [GUI.Button("START NOW"), GUI.Button("Cancel")]
+        [GUI.Text("Welcome to our Page, please push Start to use", font=('Impact',30))],
+        [GUI.Button("START NOW", font=('Impact',30)), GUI.Button("Cancel", font=('Impact',30))]
     ]
     window = GUI.Window("Welcome Page", layout, margins=(300,300), element_justification='c')
 
