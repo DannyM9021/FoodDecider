@@ -11,6 +11,11 @@ def spell_check(place):
         return checker.candidates(word)
 
 def main():
-    place = spell_check(input("Where do you want to eat? "))
-    print(place)
+    place = input("Where do you want to eat? ")
+    correction = spell_check(place)
+
+    if correction is not None:
+        print(list(correction)[0])
+    else:
+        print(place)
 main()
