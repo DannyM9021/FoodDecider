@@ -30,23 +30,23 @@ def get():
     data = response.json()
     return data['ip']
 
-def searching(food, money):
+def searching(param):
     ipAddress = "@" + str(IPConverter()[0]) + "," + str(IPConverter()[1]) + ",15z"
     #print(ipAddress)
     params = {
     "engine": "google_maps",
-    "q": str(food),
+    "q": str(param[0]),
     "ll": ipAddress,
     "type": "search",
     "api_key": "5aa1909e29c5608f5423006db43d6f8332b1ab45dacd27380ae14ebae3ab26a5"
     } 
     priceRange = ""
-    if money == "inexpensive":
+    if param[1] == "inexpensive":
         priceRange += "$"
-    elif money == "moderate":
+    elif param[1] == "moderate":
         priceRange += "$$"
     else:
-        money += "$$$"
+        param[1] += "$$$"
     search = GoogleSearch(params)
     results = search.get_dict()
     local_results = results["local_results"]
