@@ -66,6 +66,8 @@ def findPlaces(loc=("33.7939","-118.1192"),radius=4000, pagetoken = None):
       print(info)
 
    for result in res["results"]:
+      # https://developers.google.com/maps/documentation/places/web-service/search-nearby#AddressComponent
+      # go to the link above and look at attributes table, if want more, add it into my_fields 
       my_fields = ['name','formatted_phone_number','type','formatted_address']
       place_detail = (googlemaps.Client(key = APIKEY)).place(place_id = result["place_id"],fields = my_fields)
       print(place_detail)
