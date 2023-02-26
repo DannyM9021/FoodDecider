@@ -3,7 +3,7 @@ from spell_checker import spell_check # Library that checks if words are spelled
 
 GUI.theme("DarkTeal9")
 
-def welcome_page():
+def welcome_page() -> bool:
     layout = [
         [GUI.Text("Welcome to our Page, please push Start to use")],
         [GUI.Button("START NOW"), GUI.Button("Cancel")]
@@ -19,7 +19,7 @@ def welcome_page():
             window.close()
             return False
 
-def submission_page(proceed:bool):
+def submission_page(proceed:bool) -> dict:
     # Makes text fields used for user input
     if (proceed):
         layout = [
@@ -58,7 +58,7 @@ def submission_page(proceed:bool):
                         if correction is not None:
                             GUI.popup("Do you mean "+correction+"?")
                         else:
-                            print(values[0])
+                            return values
                     # If fields 2 or 3 are not integers, a message prompts them to please 
                     # re-enter the information
                     else:
@@ -66,7 +66,3 @@ def submission_page(proceed:bool):
                 # If not all fields are filled in it prompts them to do so
                 else:
                     GUI.popup("Please fill ALL fields please")
-
-def GUI_main():
-    condition = welcome_page()
-    submission_page(condition)
