@@ -1,6 +1,6 @@
 from spellchecker import SpellChecker # https://pyspellchecker.readthedocs.io/en/latest/
 
-def spell_check(place):
+def spell_check(place:str) -> str:
 
     checker = SpellChecker()
     # find those words that may be misspelled
