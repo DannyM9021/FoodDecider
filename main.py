@@ -1,6 +1,9 @@
-from GUI import GUI_main
-from decider import *
+from GUI import *
+#from decider import *
 def main():
-    GUI_main()
+    cond1 = welcome_page()
+    results = list(submission_page(cond1).values())
+    print(results)
+
 
 main()
