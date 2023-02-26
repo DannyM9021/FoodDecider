@@ -31,7 +31,7 @@ def submission_page(proceed:bool) -> dict:
         ]
 
         # Creates the GUI window for user
-        window = GUI.Window("Web Scraper", layout, margins=(300,300))
+        window = GUI.Window("Submission Page", layout, margins=(300,300))
 
         # Handles all the events when buttons on GUI are pressed
         while True:
@@ -60,6 +60,13 @@ def submission_page(proceed:bool) -> dict:
                 else:
                     GUI.popup("Please fill ALL fields please")
 def results_page(result: list):
+    if len(result[0]) == 1:
+        result[0] = '$'
+    elif len(result[0]) == 2:
+        result[0] = '$$'
+    elif len(result[0]) == 3:
+        result[0] = '$$$'
+    
     layout = [
         [GUI.Text("Your Restaurant: "+ result[1])],
         [GUI.Text("Your Price Range: "+ result[0])],
@@ -67,7 +74,7 @@ def results_page(result: list):
         [GUI.Text("Address: "+ result[3])],
         [GUI.Cancel()]
     ]
-    window = GUI.Window("Web Scraper", layout, margins=(300,300))
+    window = GUI.Window("Results Page", layout, margins=(300,300))
     while True:
         event, values = window.read()
         if event == "Cancel" or event == GUI.WIN_CLOSED:
